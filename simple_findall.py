@@ -1,49 +1,66 @@
 #!/usr/bin/env python3
 
 # Для каждого регулярного выражения, которое требуется написать,
-# указана строка, в которой нужно найти подстроки, а следом
-# после стрелки (--->) указан список подстрок, которые нужно найти
+# указана строка, в которой нужно выполнить замену, а следом
+# после стрелки (--->) указан результат замены
 
-# 1 a 1 2 b ---> a, b
-# z 2 y     ---> z, y
-REGEXP_1 = ''
+# bab ---> bzb
+# bcb ---> bzb
+# bxb ---> bzb
+REGEXP_1 = '[^b]'
+REGEXP_1_REPL = 'z'
 
-# aaa bbb ccc ---> aaa, bbb, ccc
-# ddd eee fgh ---> ddd, eee, fgh
-# a1b c2d e3f ---> a1b, c2d, e3f
-REGEXP_2 = ''
+# abcXYZabc   ---> abcabc
+# XaYbZcWaM   ---> abca
+# abc XYZabc  ---> abc abc
+REGEXP_2 = '[A-Z]'
+REGEXP_2_REPL = ''
 
-# a aa aaa ---> aa, aaa
-# b bb bbb ---> bb, bbb
-# a bb aaa ---> bb, aaa
-REGEXP_3 = ''
+# abcABCabc  ---> abcABCabc
+# DaEbFcAaB  ---> abcAaB
+# abcXYZabc  ---> abcXYZabc
+# XaYbZcZaY  ---> XaYbZcZaY
+# DXEYFZabc  ---> XYZabc
+# ADBECFXYZ  ---> ABCXYZ
+REGEXP_3 = 'DEFfde'
+REGEXP_3_REPL = ''
 
-# 1.1.1.1 aaaa bbbbb      ---> 1.1.1.1
-# a.a.a.a bbbb 2.2.2.2    ---> 2.2.2.2
-# 3.3.3.3 cccc 4.4.4.4    ---> 3.3.3.3, 4.4.4.4
-# 255.23.0.1 cccc 4.4.4.4 ---> 255.23.0.1, 4.4.4.4
-# 255.0.23.1 cccc 4.4.4.4 ---> 255.0.23.1, 4.4.4.4
-REGEXP_4 = ''
+# abc0abc   ---> abcabc
+# 1a2b3c4   ---> abc
+# a123!@#bc ---> abc
+REGEXP_4 = '[^abc]'
+REGEXP_4_REPL = ''
 
-# aaa Abbb ccc ---> Abbb
-# Aaa Abbb ccc ---> Aaa, Abbb
-# Caa Cbb Accc ---> Accc
-REGEXP_5 = ''
+# a,b,c d,e,f      ---> a_b_c_d_e_f
+# abc!@#a          ---> abc___a
+# abc!@#,./abc abc ---> abc______abc_abc
+REGEXP_5 = '[^abcdef]'
+REGEXP_5_REPL = ''
 
-# a b c d e f ---> a, b, e, f
-# abcdef      ---> a, b, e, f
-# adf         ---> a, f
-# acf         ---> a, f
-REGEXP_6 = ''
+# a abc aa bb  ---> a aa bb
+# a def dd fd  ---> a dd fd
+# x xy xyz yz  ---> x xy yz
+# x xyz xyz yz ---> x yz
+REGEXP_6 = ' \w{3}'
+REGEXP_6_REPL = ''
 
-# aaa +1.0 bb              ---> +1.0
-# aaa -1.0 bb              ---> -1.0
-# aaa -123.234 bb +111.999 ---> -123.234, +111.999
-REGEXP_7 = ''
+# AabcdZ ---> abcd
+# BabcdC ---> BabcdC
+# aAbZcd ---> aAbZcd
+# AabcdY ---> abcdY
+# BabcdZ ---> Babcd
+REGEXP_7 = '^A|Z$'
+REGEXP_7_REPL = ''
 
-# aaa 18-04-2016 bbb            ---> 18-04-2016
-# aaa 18.04.2016 bbb            ---> 18.04.2016
-# aaa 18-04-ABCD bbb 18.04.2016 ---> 18.04.2016
-# aaa 18/04/ABCD bbb 18/04/2016 ---> 18/04/2016
-# aaa 18/04/ABCD bbb 18/4/2016  ---> 18/4/2016
-REGEXP_8 = ''
+# a b c  ---> a b c
+# a  b c ---> a b c
+# d    f ---> d f
+REGEXP_8 = '[ ]{2,100}'
+REGEXP_8_REPL = ''
+
+# a ab abc abcd ab ---> a ab ab
+# a xyz xyz a      ---> a a
+# d xy xyza a      ---> d xy a
+# a xyzzy b        ---> a xyzzy b
+REGEXP_9 = 'xyza |xyz |abc |abcd'
+REGEXP_9_REPL = ''
