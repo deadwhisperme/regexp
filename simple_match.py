@@ -39,7 +39,7 @@ REGEXP_4 = '.{0,2}ver.{1,5}'
 # + bbb
 # - bbbb
 # - ccc
-REGEXP_5 = '^...$'
+REGEXP_5 = '^[ab]{1}[ab]{1}[ab]{1}$'
 
 # - Ok
 # - OkOk
@@ -49,7 +49,7 @@ REGEXP_5 = '^...$'
 # - abab
 # + ababab
 # - abababab
-REGEXP_6 = '^......$'
+REGEXP_6 = '^[Oabk]{6}$'
 
 # - aaa
 # - aaa aaa
@@ -58,7 +58,7 @@ REGEXP_6 = '^......$'
 # + Aaa aaa aaa
 # - A
 # - aaa A aaa
-REGEXP_7 = '^... ... ...$'
+REGEXP_7 = '^[aA ]{11}$'
 
 # + abc
 # + abc03
